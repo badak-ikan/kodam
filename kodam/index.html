@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Cek Kodam Simpel</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #111; color: white; }
+        .box { border: 2px solid #38bdf8; padding: 20px; border-radius: 10px; display: inline-block; }
+        input { padding: 10px; border-radius: 5px; border: none; width: 200px; }
+        button { padding: 10px 20px; background: #38bdf8; border: none; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        #hasil { margin-top: 20px; font-size: 1.5rem; color: #fbbf24; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Cek Kodam Kamu</h2>
+        <input type="text" id="inputNama" placeholder="Ketik nama di sini...">
+        <button onclick="mulaiCek()">Cek Sekarang</button>
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        function mulaiCek() {
+            const nama = document.getElementById('inputNama').value;
+            const tempatHasil = document.getElementById('hasil');
+
+            if (nama.trim() === "") {
+                alert("Masukkan nama dulu!");
+                return;
+            }
+
+            const daftar = [
+                "Macan Progresif", "Kucing Freelance", "Tuyul Fullstack", 
+                "Genderuwo Senior", "Lele Debugging", "Naga JavaScript",
+                "Sapi Antar Silit", "Ayam Bitcoin", "Tuyul Crypto", 
+                "Genderuwo Forex", "Lele Kayang", "Naga Api"
+            ];
+
+            // Animasi loading sederhana
+            tempatHasil.innerText = "Menerawang...";
+
+            setTimeout(() => {
+                // Logika: Ambil index berdasarkan jumlah karakter nama
+                const index = nama.length % daftar.length;
+                const kodam = daftar[index];
+                
+                tempatHasil.innerText = "Kodam Anda: " + kodam;
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
